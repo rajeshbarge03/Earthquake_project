@@ -1,0 +1,13 @@
+{
+	"name": "monthly_fetch_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "monthly",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

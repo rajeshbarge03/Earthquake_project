@@ -1,0 +1,13 @@
+{
+	"name": "monthly",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

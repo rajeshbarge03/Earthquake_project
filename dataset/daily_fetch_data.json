@@ -1,0 +1,13 @@
+{
+	"name": "daily_fetch_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "daily",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
