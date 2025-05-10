@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "earthquake-analysis"
+		},
+		"earthquake_storage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'earthquake_storage'"
+		},
+		"daily_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+		},
+		"earthquake_storage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://earthquakeanalysis1.dfs.core.windows.net/"
+		},
+		"monthly_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "earthquake-analysis_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"earthquake_storage_accountKey": {
+						"value": "[parameters('earthquake_storage_accountKey')]"
+					},
+					"daily_properties_typeProperties_url": {
+						"value": "[parameters('daily_properties_typeProperties_url')]"
+					},
+					"earthquake_storage_properties_typeProperties_url": {
+						"value": "[parameters('earthquake_storage_properties_typeProperties_url')]"
+					},
+					"monthly_properties_typeProperties_url": {
+						"value": "[parameters('monthly_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
