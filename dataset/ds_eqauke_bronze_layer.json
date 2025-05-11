@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "earthquake_data_@{formatDateTime(utcNow(),'yyyymmddhhmmss')}.json",
+					"type": "Expression"
+				},
 				"folderPath": {
 					"value": "@formatDateTime(utcNow(),'yyyymmdd')",
 					"type": "Expression"
