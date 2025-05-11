@@ -1,0 +1,21 @@
+{
+	"name": "ds_eqauke_bronze_layer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_earthquake_analysis_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@formatDateTime(utcNow(),'yyyymmdd')",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}
